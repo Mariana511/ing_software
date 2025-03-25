@@ -7,12 +7,23 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
+import co.edu.poli.Trabajo_Clase.modelo.Certificacion;
 import co.edu.poli.Trabajo_Clase.modelo.Cliente;
 import co.edu.poli.Trabajo_Clase.modelo.Electronico;
+import co.edu.poli.Trabajo_Clase.modelo.Evaluacion;
+import co.edu.poli.Trabajo_Clase.modelo.NequiAdapter;
+import co.edu.poli.Trabajo_Clase.modelo.Pago;
+import co.edu.poli.Trabajo_Clase.modelo.PayPalAdapter;
+import co.edu.poli.Trabajo_Clase.modelo.PoliticaEntrega;
 import co.edu.poli.Trabajo_Clase.modelo.Producto;
+import co.edu.poli.Trabajo_Clase.modelo.Proveedor;
 import co.edu.poli.Trabajo_Clase.servicio.ClienteImplementacionDAO;
+import co.edu.poli.Trabajo_Clase.servicio.NequiPago;
+import co.edu.poli.Trabajo_Clase.servicio.PagoEfectivo;
+import co.edu.poli.Trabajo_Clase.servicio.PayPalPago;
 import co.edu.poli.Trabajo_Clase.servicio.ProductoImplementacionDAO;
 import javafx.scene.control.TextArea;
+
 
 public class FormularioController {
 	
@@ -81,11 +92,37 @@ public class FormularioController {
 
     @FXML
     void clickAdapter(ActionEvent event) {
+    	try {
+            double monto = 100.0; // Puedes hacer que el usuario ingrese este monto en un TextField
 
+            // Crear instancias de pago con Adapter
+            Pago pagoNequi = new NequiAdapter(new NequiPago());
+            Pago pagoPayPal = new PayPalAdapter(new PayPalPago());
+            Pago pagoEfectivo = new PagoEfectivo();
+
+            // Generar mensajes
+            StringBuilder resultado = new StringBuilder("Procesando pagos...\n");
+            resultado.append(pagoNequi.procesarPago(monto)).append("\n");
+            resultado.append(pagoPayPal.procesarPago(monto)).append("\n");
+            resultado.append(pagoEfectivo.procesarPago(monto)).append("\n");
+
+            // Mostrar en el TextArea
+            txtAreaImp.setText(resultado.toString());
+
+        } catch (NumberFormatException e) {
+            mostrarAlerta("Error", "Monto inválido. Debe ser un número.", AlertType.ERROR);
+        }
     }
 
     @FXML
     void clickBuilder(ActionEvent event) {
+    	Proveedor proveedor = new Proveedor.ProveedorBuilder("Proveedor ABC")
+                .setEvaluacion(new Evaluacion("Aprobado"))
+                .setCertificacion(new Certificacion("ISO 9001"))
+                .setPoliticaEntrega(new PoliticaEntrega("Entrega en 5 días hábiles"))
+                .build();
+       
+        txtAreaImp.setText(proveedor.toString());
 
     }   
     
