@@ -1,4 +1,4 @@
-package co.edu.poli.Trabajo_Clase.servicio;
+package co.edu.poli.Trabajo_Clase.modelo;
 
 public class NequiPago {
 	public String pagoNequi(double monto) {

@@ -1,7 +1,5 @@
 package co.edu.poli.Trabajo_Clase.modelo;
 
-import co.edu.poli.Trabajo_Clase.servicio.PatronComposite;
-
 public class Empleado implements PatronComposite {
 	private String nombre;
     private String cargo;

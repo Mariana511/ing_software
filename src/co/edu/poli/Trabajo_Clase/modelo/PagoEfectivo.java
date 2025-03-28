@@ -1,6 +1,4 @@
-package co.edu.poli.Trabajo_Clase.servicio;
-
-import co.edu.poli.Trabajo_Clase.modelo.Pago;
+package co.edu.poli.Trabajo_Clase.modelo;
 
 public class PagoEfectivo implements Pago {
 

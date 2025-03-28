@@ -1,7 +1,5 @@
 package co.edu.poli.Trabajo_Clase.modelo;
 
-import co.edu.poli.Trabajo_Clase.servicio.PayPalPago;
-
 public class PayPalAdapter implements Pago {
 	 private PayPalPago paypal;
 

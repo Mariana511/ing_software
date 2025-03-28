@@ -3,8 +3,6 @@ package co.edu.poli.Trabajo_Clase.modelo;
 import java.util.ArrayList;
 import java.util.List;
 
-import co.edu.poli.Trabajo_Clase.servicio.PatronComposite;
-
 public class Departamento implements PatronComposite{
 	private String nombre;
     private List<PatronComposite> elementos = new ArrayList<>();
