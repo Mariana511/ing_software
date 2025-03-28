@@ -17,6 +17,8 @@ import co.edu.poli.Trabajo_Clase.modelo.PayPalAdapter;
 import co.edu.poli.Trabajo_Clase.modelo.PoliticaEntrega;
 import co.edu.poli.Trabajo_Clase.modelo.Producto;
 import co.edu.poli.Trabajo_Clase.modelo.Proveedor;
+import co.edu.poli.Trabajo_Clase.modelo.Departamento;
+import co.edu.poli.Trabajo_Clase.modelo.Empleado;
 import co.edu.poli.Trabajo_Clase.servicio.ClienteImplementacionDAO;
 import co.edu.poli.Trabajo_Clase.servicio.NequiPago;
 import co.edu.poli.Trabajo_Clase.servicio.PagoEfectivo;
@@ -160,8 +162,23 @@ public class FormularioController {
 
     @FXML
     void clickComposite(ActionEvent event) {
-
+        StringBuilder sb = new StringBuilder();
+        
+        Departamento departamento = new Departamento("Desarrollo");
+        departamento.agregarElemento(new Empleado("Juan Perez", "Ingeniero de Software"));
+        departamento.agregarElemento(new Empleado("Ana Gómez", "Analista QA"));
+        
+        Departamento subDepartamento = new Departamento("Móvil");
+        subDepartamento.agregarElemento(new Empleado("Carlos Ruiz", "Desarrollador Android"));
+        subDepartamento.agregarElemento(new Empleado("María López", "Desarrolladora iOS"));
+        
+        departamento.agregarElemento(subDepartamento);
+        
+        departamento.mostrarInformacion(sb);
+        
+        txtAreaImp.setText(sb.toString());
     }
+
 
     @FXML
     void clickConsultaVarios(ActionEvent event) {
