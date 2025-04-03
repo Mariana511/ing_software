@@ -36,6 +36,9 @@ public class FormularioController {
 
     @FXML
     private Button bttAdapter;
+    
+    @FXML
+    private Button bttBridge;
 
     @FXML
     private Button bttBuilder;
@@ -48,6 +51,9 @@ public class FormularioController {
 
     @FXML
     private Button bttConsultaVarios;
+    
+    @FXML
+    private Button bttDecorator;
 
     @FXML
     private Button bttEliminar;
@@ -114,6 +120,11 @@ public class FormularioController {
         } catch (NumberFormatException e) {
             mostrarAlerta("Error", "Monto inválido. Debe ser un número.", AlertType.ERROR);
         }
+    }
+    
+    @FXML
+    void clickBridge(ActionEvent event) {
+
     }
 
     @FXML
@@ -193,6 +204,11 @@ public class FormularioController {
         } else {
             txtAreaCliente.setText("No hay clientes registrados.");
         }
+
+    }
+    
+    @FXML
+    void clickDecorator(ActionEvent event) {
 
     }
 
