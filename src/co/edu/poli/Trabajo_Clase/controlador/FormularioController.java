@@ -7,6 +7,8 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
+import co.edu.poli.Trabajo_Clase.modelo.CarritoBasico;
+import co.edu.poli.Trabajo_Clase.modelo.CarritoCompra;
 import co.edu.poli.Trabajo_Clase.modelo.Certificacion;
 import co.edu.poli.Trabajo_Clase.modelo.Cliente;
 import co.edu.poli.Trabajo_Clase.modelo.Electronico;
@@ -20,8 +22,11 @@ import co.edu.poli.Trabajo_Clase.modelo.PayPalPago;
 import co.edu.poli.Trabajo_Clase.modelo.PoliticaEntrega;
 import co.edu.poli.Trabajo_Clase.modelo.Producto;
 import co.edu.poli.Trabajo_Clase.modelo.Proveedor;
+import co.edu.poli.Trabajo_Clase.modelo.PuntosDecorator;
 import co.edu.poli.Trabajo_Clase.modelo.Departamento;
+import co.edu.poli.Trabajo_Clase.modelo.DescuentoDecorator;
 import co.edu.poli.Trabajo_Clase.modelo.Empleado;
+import co.edu.poli.Trabajo_Clase.modelo.EnvioGratisDecorator;
 import co.edu.poli.Trabajo_Clase.servicio.ClienteImplementacionDAO;
 import co.edu.poli.Trabajo_Clase.servicio.ProductoImplementacionDAO;
 import javafx.scene.control.TextArea;
@@ -209,7 +214,25 @@ public class FormularioController {
     
     @FXML
     void clickDecorator(ActionEvent event) {
-
+    	double costoInicial = 150;
+        int cantidadArticulos = 4;
+        double porcentajeDescuento = 0.10; 
+        double valorEnvio = 20;
+        double valorPuntos = 5;
+        
+    	CarritoCompra carrito1=new CarritoBasico(costoInicial, cantidadArticulos);
+    	carrito1=new DescuentoDecorator(carrito1, porcentajeDescuento);
+    	carrito1=new EnvioGratisDecorator(carrito1, valorEnvio);
+    	carrito1=new PuntosDecorator(carrito1, valorPuntos);
+    	
+    	txtAreaImp.setText(
+    	        "Resumen del Carrito:\n" +
+    	        		"Costo inicial: $" + costoInicial + "\n" +
+    	                "Descuento aplicado: -$" + porcentajeDescuento + "\n" +
+    	                "Descuento por envío gratis: -$" + valorEnvio + "\n" +
+    	                "Descuento por puntos: -$" + valorPuntos + "\n\n" +
+    	                "Cantidad de artículos: " + cantidadArticulos + "\n" +
+    	                "Costo final: $" + carrito1.getCosto());
     }
 
     @FXML
