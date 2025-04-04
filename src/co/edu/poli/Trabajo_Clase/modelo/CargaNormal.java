@@ -1,6 +1,6 @@
 package co.edu.poli.Trabajo_Clase.modelo;
 
-public class cargaNormal implements Mercancia {
+public class CargaNormal implements Mercancia {
 
 	@Override
 	public String procesarCarga(String destino) {

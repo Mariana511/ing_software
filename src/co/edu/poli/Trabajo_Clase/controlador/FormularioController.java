@@ -25,12 +25,14 @@ import co.edu.poli.Trabajo_Clase.modelo.PoliticaEntrega;
 import co.edu.poli.Trabajo_Clase.modelo.Producto;
 import co.edu.poli.Trabajo_Clase.modelo.Proveedor;
 import co.edu.poli.Trabajo_Clase.modelo.PuntosDecorator;
-import co.edu.poli.Trabajo_Clase.modelo.cargaNormal;
+import co.edu.poli.Trabajo_Clase.modelo.CargaNormal;
+import co.edu.poli.Trabajo_Clase.modelo.CargaPeligrosa;
 import co.edu.poli.Trabajo_Clase.modelo.Departamento;
 import co.edu.poli.Trabajo_Clase.modelo.DescuentoDecorator;
 import co.edu.poli.Trabajo_Clase.modelo.Documentos;
 import co.edu.poli.Trabajo_Clase.modelo.Empleado;
 import co.edu.poli.Trabajo_Clase.modelo.Envio;
+import co.edu.poli.Trabajo_Clase.modelo.EnvioExpress;
 import co.edu.poli.Trabajo_Clase.modelo.EnvioGratisDecorator;
 import co.edu.poli.Trabajo_Clase.modelo.EnvioInternacional;
 import co.edu.poli.Trabajo_Clase.modelo.EnvioNacional;
@@ -136,14 +138,16 @@ public class FormularioController {
     
     @FXML
     void clickBridge(ActionEvent event) {
-    	Envio envio1 = new EnvioNacional(new cargaNormal());
+    	Envio envio1 = new EnvioNacional(new CargaNormal());
         Envio envio2 = new EnvioInternacional(new CargaFragil());
         Envio envio3 = new EnvioNacional(new Documentos());
+        Envio envio4= new EnvioExpress(new CargaPeligrosa());
 
         // Mostrar resultados en el TextArea
         String resultado = envio1.enviar("Bogotá") +
                            envio2.enviar("Madrid") +
-                           envio3.enviar("Medellin");
+                           envio3.enviar("Medellin") +
+                           envio4.enviar("Madrid");
 
         txtAreaImp.setText(resultado);
 
