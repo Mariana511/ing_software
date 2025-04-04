@@ -25,6 +25,7 @@ import co.edu.poli.Trabajo_Clase.modelo.PoliticaEntrega;
 import co.edu.poli.Trabajo_Clase.modelo.Producto;
 import co.edu.poli.Trabajo_Clase.modelo.Proveedor;
 import co.edu.poli.Trabajo_Clase.modelo.PuntosDecorator;
+import co.edu.poli.Trabajo_Clase.modelo.cargaNormal;
 import co.edu.poli.Trabajo_Clase.modelo.Departamento;
 import co.edu.poli.Trabajo_Clase.modelo.DescuentoDecorator;
 import co.edu.poli.Trabajo_Clase.modelo.Documentos;
@@ -135,14 +136,14 @@ public class FormularioController {
     
     @FXML
     void clickBridge(ActionEvent event) {
-    	Envio envio1 = new EnvioNacional(new Mercancia());
+    	Envio envio1 = new EnvioNacional(new cargaNormal());
         Envio envio2 = new EnvioInternacional(new CargaFragil());
         Envio envio3 = new EnvioNacional(new Documentos());
 
         // Mostrar resultados en el TextArea
         String resultado = envio1.enviar("Bogotá") +
                            envio2.enviar("Madrid") +
-                           envio3.enviar("Lima");
+                           envio3.enviar("Medellin");
 
         txtAreaImp.setText(resultado);
 

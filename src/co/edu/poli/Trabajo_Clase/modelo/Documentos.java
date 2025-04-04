@@ -1,6 +1,6 @@
 package co.edu.poli.Trabajo_Clase.modelo;
 
-public class Documentos implements TipoCarga{
+public class Documentos implements Mercancia{
 
 	@Override
 	public String procesarCarga(String destino) {
