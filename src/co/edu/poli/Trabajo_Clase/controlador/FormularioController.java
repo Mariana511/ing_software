@@ -7,12 +7,14 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
+import co.edu.poli.Trabajo_Clase.modelo.CargaFragil;
 import co.edu.poli.Trabajo_Clase.modelo.CarritoBasico;
 import co.edu.poli.Trabajo_Clase.modelo.CarritoCompra;
 import co.edu.poli.Trabajo_Clase.modelo.Certificacion;
 import co.edu.poli.Trabajo_Clase.modelo.Cliente;
 import co.edu.poli.Trabajo_Clase.modelo.Electronico;
 import co.edu.poli.Trabajo_Clase.modelo.Evaluacion;
+import co.edu.poli.Trabajo_Clase.modelo.Mercancia;
 import co.edu.poli.Trabajo_Clase.modelo.NequiAdapter;
 import co.edu.poli.Trabajo_Clase.modelo.NequiPago;
 import co.edu.poli.Trabajo_Clase.modelo.Pago;
@@ -25,8 +27,12 @@ import co.edu.poli.Trabajo_Clase.modelo.Proveedor;
 import co.edu.poli.Trabajo_Clase.modelo.PuntosDecorator;
 import co.edu.poli.Trabajo_Clase.modelo.Departamento;
 import co.edu.poli.Trabajo_Clase.modelo.DescuentoDecorator;
+import co.edu.poli.Trabajo_Clase.modelo.Documentos;
 import co.edu.poli.Trabajo_Clase.modelo.Empleado;
+import co.edu.poli.Trabajo_Clase.modelo.Envio;
 import co.edu.poli.Trabajo_Clase.modelo.EnvioGratisDecorator;
+import co.edu.poli.Trabajo_Clase.modelo.EnvioInternacional;
+import co.edu.poli.Trabajo_Clase.modelo.EnvioNacional;
 import co.edu.poli.Trabajo_Clase.servicio.ClienteImplementacionDAO;
 import co.edu.poli.Trabajo_Clase.servicio.ProductoImplementacionDAO;
 import javafx.scene.control.TextArea;
@@ -129,6 +135,16 @@ public class FormularioController {
     
     @FXML
     void clickBridge(ActionEvent event) {
+    	Envio envio1 = new EnvioNacional(new Mercancia());
+        Envio envio2 = new EnvioInternacional(new CargaFragil());
+        Envio envio3 = new EnvioNacional(new Documentos());
+
+        // Mostrar resultados en el TextArea
+        String resultado = envio1.enviar("Bogotá") +
+                           envio2.enviar("Madrid") +
+                           envio3.enviar("Lima");
+
+        txtAreaImp.setText(resultado);
 
     }
 
