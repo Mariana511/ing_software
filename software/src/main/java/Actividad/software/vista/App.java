@@ -12,6 +12,21 @@ import java.io.IOException;
  * JavaFX App
  */
 public class App extends Application {
+    @Override
+    public void start(Stage primaryStage) throws Exception {
+        Parent root = FXMLLoader.load(getClass().getResource("/view/MainView.fxml"));
+        primaryStage.setTitle("Patrones de Diseño MVC");
+        primaryStage.setScene(new Scene(root));
+        primaryStage.show();
+    }
+
+    public static void main(String[] args) {
+        launch(args);
+    }
+}
+
+
+/*{
 
     private static Scene scene;
 
@@ -35,4 +50,4 @@ public class App extends Application {
         launch();
     }
 
-}
+}/*

@@ -1,5 +1,5 @@
 package Actividad.software.modelo;
 
-public interface Producto {
+public class ProveedorFac {
 
 }
