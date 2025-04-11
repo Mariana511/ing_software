@@ -47,7 +47,7 @@
         <content>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                <children>
-                  <TextArea layoutX="41.0" layoutY="225.0" prefHeight="132.0" prefWidth="519.0" />
+                  <TextArea fx:id="txtSalidaFly" layoutX="41.0" layoutY="225.0" prefHeight="132.0" prefWidth="519.0" />
                   <TextField fx:id="txtNombreProducto" layoutX="120.0" layoutY="84.0" />
                   <TextField fx:id="txtNombreProveedor" layoutX="346.0" layoutY="84.0" />
                   <Label fx:id="lblProducto" layoutX="137.0" layoutY="39.0" text="Nombre del Producto" />
