@@ -5,6 +5,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 import co.edu.poli.Trabajo_Clase.modelo.CargaFragil;
@@ -77,6 +78,15 @@ public class FormularioController {
 
     @FXML
     private Button bttInsertar;
+    
+    @FXML
+    private CheckBox chkDescuento;
+    
+    @FXML
+    private CheckBox chkEnvioGratis;
+    
+    @FXML
+    private CheckBox chkPuntos;
     
     @FXML
     private TextArea txtAreaCliente;
@@ -301,6 +311,56 @@ public class FormularioController {
         }
 
     }
+    @FXML
+    void clickdescuento(ActionEvent event) {
+    	actualizarResumenCarrito();
+
+    	
+    }
+    
+    @FXML
+    void clickenvio(ActionEvent event) {
+    	actualizarResumenCarrito();
+
+    	
+    }
+    @FXML
+    void clickpuntos(ActionEvent event) {
+ 	actualizarResumenCarrito();
+    	
+    }
+    
+    private void actualizarResumenCarrito() {
+        double costoInicial = 150;
+        int cantidadArticulos = 4;
+        double porcentajeDescuento = 0.10;
+        double valorEnvio = 20;
+        double valorPuntos = 5;
+
+        CarritoCompra carrito = new CarritoBasico(costoInicial, cantidadArticulos);
+        StringBuilder resumen = new StringBuilder("Resumen del Carrito:\n");
+        resumen.append("Costo inicial: $").append(costoInicial).append("\n");
+
+        if (chkDescuento.isSelected()) {
+            carrito = new DescuentoDecorator(carrito, porcentajeDescuento);
+            resumen.append("Descuento aplicado: -").append(porcentajeDescuento * 100).append("%\n");
+        }
+       
+		if (chkEnvioGratis.isSelected()) {
+            carrito = new EnvioGratisDecorator(carrito, valorEnvio);
+            resumen.append("Descuento por envío gratis: -$").append(valorEnvio).append("\n");
+        }
+        if (chkPuntos.isSelected()) {
+            carrito = new PuntosDecorator(carrito, valorPuntos);
+            resumen.append("Descuento por puntos: -$").append(valorPuntos).append("\n");
+        }
+
+        resumen.append("\nCantidad de artículos: ").append(cantidadArticulos);
+        resumen.append("\nCosto final: $").append(carrito.getCosto());
+
+        txtAreaImp.setText(resumen.toString());
+    }
+    
     
     private void mostrarAlerta(String titulo, String mensaje, AlertType tipo) {
         Alert alert = new Alert(tipo);
