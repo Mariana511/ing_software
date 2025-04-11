@@ -1,6 +1,8 @@
-package co.edu.poli.Trabajo_Clase.vista;
+package Actividad.software.vista;
 
 import java.io.IOException;
+
+import Actividad.software.vista.Main;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -8,16 +10,17 @@ import javafx.scene.Scene;
 import javafx.scene.control.TabPane;
 import javafx.stage.Stage;
 
-public class Main extends Application{
+public class Main extends Application {
 	
 	private static Scene scene;
 
     @Override
     public void start(Stage stage) throws IOException {
-    	TabPane root =(TabPane) FXMLLoader.load(getClass().getResource("/co/edu/poli/Trabajo_Clase/vista/Formulario.fxml"));
+    	FXMLLoader loader = new FXMLLoader(getClass().getResource("/Actividad/software/vista/ProyectoSoft.fxml"));
+    	TabPane root = loader.load();
         scene = new Scene(root);
         stage.setScene(scene);
-        stage.setTitle("TIENDA");
+        stage.setTitle("PROYECTO 2 DE CLASE DE SOFTWARE");
         stage.show();
     }
 
@@ -33,5 +36,5 @@ public class Main extends Application{
     public static void main(String[] args) {
         launch();
     }
-	
+
 }
