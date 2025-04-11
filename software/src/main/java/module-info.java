@@ -1,7 +1,15 @@
 module Actividad.software {
-    requires javafx.controls;
-    requires javafx.fxml;
+	exports Actividad.software.controlador;
+	exports Actividad.software.modelo;
+	exports Actividad.software.vista;
 
-    opens Actividad.software to javafx.fxml;
-    exports Actividad.software;
+	requires java.desktop;
+	requires java.sql;
+	requires javafx.controls;
+    requires javafx.fxml;
+    
+    opens Actividad.software.vista to javafx.fxml;
+    opens Actividad.software.controlador to javafx.fxml;
+	   
+    
 }
